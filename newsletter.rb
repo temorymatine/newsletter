@@ -27,28 +27,17 @@ ARTICLES = [
 # Methods to generate the newsletter
 #########################
 
-def calculate_recipients(subscribers, unsubscribed)
- 
-#   final_array = []
- 
-#   subscribers.each do |subscriber_email| 
-
-#     unsubscribed.each do |unsubbed_email| 
-
-#       if subscriber_email != unsubbed_email
-#         final_array << subscriber_email
-#       end
-
-#     end
-
-#   end
-
-#  puts final_array
-
-
-  # Using the SUBSCRIBERS and UNSUBSCRIBED arrays,
-  # write a method that will return an array of only the subscribers who haven't unsubscribed
+def calculate_recipients
+  
+final_array = [ ]
+ final_array = SUBSCRIBERS
+ final_array.delete_if { |email| UNSUBSCRIBED.include? (email) }
+final_array
+  
 end
+print calculate_recipients
+
+
 
 def first_n_articles(number_of_articles)
   #ARTICLES.first(number_of_articles)
@@ -71,42 +60,42 @@ def print_many_articles(articles)
   # and format each one using the print_one_article method
 end
 
-def format_campus_location(campus)
- puts  "Flatiron #{campus["name"]} "
-end
+# def format_campus_location(campus)
+#  puts  "Flatiron #{campus[:name]} "
+# end
 
-def format_subject
-  puts "#{format_campus_location(CAMPUS)} Newsletter - #{DATE}\n\n"
-end
+# def format_subject
+#   puts "#{format_campus_location(CAMPUS)} Newsletter - #{DATE}\n\n"
+# end
 
-def format_footer(campus)
-  "Flatiron Newsletter · #{campus[:name]} · #{campus[:address]} "
-end
+# def format_footer(campus)
+#   "Flatiron Newsletter · #{campus[:name]} · #{campus[:address]} "
+# end
 
-def print_newsletter(number)
-  puts "Generating this week's newsletter...\n\n"
+# def print_newsletter(number)
+#   puts "Generating this week's newsletter...\n\n"
 
-  print "SUBJECT: "
-  format_subject
+#   print "SUBJECT: "
+#   format_subject
 
-  print "RECIPIENTS: "
-  print_recipients
+#   print "RECIPIENTS: "
+#   print_recipients
 
-  puts "\nBODY:"
-  format_subject
-  articles = first_n_articles(number)
-  print_many_articles(articles)
-  puts format_footer(CAMPUS)
+#   puts "\nBODY:"
+#   format_subject
+#   articles = first_n_articles(number)
+#   print_many_articles(articles)
+#   puts format_footer(CAMPUS)
 
   
-end
+# end
 
-def run
-  # We want our program to print three articles by default,
-  # but we can change that number here
-  print_newsletter("3")
-end
+# def run
+#   # We want our program to print three articles by default,
+#   # but we can change that number here
+#   print_newsletter("3")
+# end
 
-# When we run "ruby newsletter.rb" in the command line,
-# the 'run' method will be called because we're calling it below.
-run
+# # When we run "ruby newsletter.rb" in the command line,
+# # the 'run' method will be called because we're calling it below.
+# run
